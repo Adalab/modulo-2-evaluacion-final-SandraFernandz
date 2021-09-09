@@ -1,7 +1,20 @@
 body {
   padding: 2rem;
   height: 100vh;
-  background-image: url('../images/bg-adalab.png');
-  background-color: $color-bg;
-  font-family: $font-main;
+  // background-image: url('../images/bg-adalab.png');
+  // background-color: $color-bg;
+  background-color: rosybrown;
+  //font-family: $font-main;
+  font-family: sans-serif;
+}
+
+.main {
+  &_form {
+    margin-top: 50px;
+  }
+  &_ulList_container {
+    border: black 2px solid;
+    margin-top: 30px;
+    height: 50px;
+  }
 }

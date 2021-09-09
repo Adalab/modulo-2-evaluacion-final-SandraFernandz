@@ -23,9 +23,16 @@ ul {
 body {
   padding: 2rem;
   height: 100vh;
-  background-image: url("../images/bg-adalab.png");
-  background-color: #f3f4f5;
-  font-family: "Roboto", sans-serif; }
+  background-color: rosybrown;
+  font-family: sans-serif; }
+
+.main_form {
+  margin-top: 50px; }
+
+.main_ulList_container {
+  border: black 2px solid;
+  margin-top: 30px;
+  height: 50px; }
 
 .page__header {
   display: flex;
