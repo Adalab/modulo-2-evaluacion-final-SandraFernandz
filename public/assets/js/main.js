@@ -13,8 +13,8 @@ function handleConnectTv(ev) {
 
   //variable que recoge el valor introducido por usuaria
   let textInput = givenInput.value;
-  //parámetros a la URL del tipo clave=valor, siempre tras ? y separados por &,
-  // por ejemplo si quisieras pedir un string con determinada longitud, la url quedaría así https://api.rand.fun/text/password?length=20
+  //parámetros a la URL de tipo clave=valor, siempre tras ? y separados por &,
+  // p.e. para pedir string con longitud determinada, la url quedaría así https://api.rand.fun/text/password?length=20
 
   fetch(`https://api.tvmaze.com/search/shows?q=${textInput}`)
     .then((response) => response.json())
