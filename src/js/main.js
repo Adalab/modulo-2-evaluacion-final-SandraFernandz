@@ -78,8 +78,6 @@ function handleList(ev) {
 
   //busco si la serie clickada está en el array de favoritos; Si no está, el valor de vuelta será -1, sino devuelve la posición. busco dentro de mi array de favoritos "favorites". "fav" hace referencia a cada uno de los elementos de del array favorites
 
-  debugger;
-
   const favoritesFound = favorites.findIndex((fav) => {
     return fav.show.id === parseInt(selectedSeries);
   });
@@ -94,6 +92,16 @@ function handleList(ev) {
   console.log(selectedSeries);
   console.log(favoritesFound);
 }
+
 //creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase. Le pasamos como parámetro cuál es la serie del objeto que quiero ver si es favorito o no(en la función isFavorite)
 
-function isFavorite(serie) {}
+function isFavorite(serie) {
+  const favoriteFound = favorites.find((fav) => {
+    return fav.show.id === serie.show.id;
+  });
+  if (favoriteFound === undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
