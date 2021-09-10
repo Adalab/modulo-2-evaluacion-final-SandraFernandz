@@ -67,7 +67,8 @@ function handleList(ev) {
   //obtengo el id de la serie clickada
   const selectedSeries = ev.currentTarget.id;
   const selectedItem = ev.currentTarget;
-  selectedItem.classList.toggle("main_ulList_container_li_title");
+
+  //selectedItem.classList.toggle("main_ulList_container_li_title");
   console.log(ev.currentTarget.id);
   //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
   const clickedItem = series.find((serie) => {
@@ -75,6 +76,8 @@ function handleList(ev) {
     return serie.show.id === parseInt(selectedSeries);
   });
   console.log(clickedItem);
+  favorites.push(clickedItem);
+  console.log(favorites);
 
   //busco si la serie clickada está en el array de favoritos;
   //   const favoritesFound = favorites.findIndex((fav) => {
