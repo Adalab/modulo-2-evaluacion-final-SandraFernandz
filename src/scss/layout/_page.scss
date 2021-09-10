@@ -13,11 +13,16 @@ body {
     margin-top: 50px;
   }
   &_ulList_container {
-    border: black 2px solid;
     margin-top: 30px;
     height: 50px;
+    &_li_title {
+      border: black 2px solid;
+    }
     &_li_img {
       height: 50px;
     }
+  }
+  & .favorite {
+    border: red 3px solid;
   }
 }

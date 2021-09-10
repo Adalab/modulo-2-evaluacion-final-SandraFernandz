@@ -30,11 +30,15 @@ body {
   margin-top: 50px; }
 
 .main_ulList_container {
-  border: black 2px solid;
   margin-top: 30px;
   height: 50px; }
+  .main_ulList_container_li_title {
+    border: black 2px solid; }
   .main_ulList_container_li_img {
     height: 50px; }
+
+.main .favorite {
+  border: red 3px solid; }
 
 .page__header {
   display: flex;

@@ -6,6 +6,7 @@ const ulList = document.querySelector(".js_ulList");
 
 //variable local que almacena el resultado de la búsqueda de las series introducida en el input de texto
 let series = [];
+let favorites = [];
 
 //función manejadora del evento click de button.addEventListener para que al hacer click en el botón, la aplicación se conecte a la api de TVMaze
 function handleConnectTv(ev) {
@@ -47,6 +48,38 @@ function paintSeries() {
   }
   ulList.innerHTML = html;
   console.log(html);
+  listenListedSeries();
+}
+
+//creamos una función para poder escuchar en cada una de las series y poder marcarlas con su id si el usuario las elige como favoritas
+function listenListedSeries() {
+  //selecciono todos los li pintados de la lista
+  const listSeries = document.querySelectorAll(".js_listItem");
+  //recorro el array de los li para escuchar eventos en cada uno de ellos
+  for (const listEl of listSeries) {
+    //escucho el evento sobre cada serie de la lista
+    listEl.addEventListener("click", handleList);
+  }
+}
+
+//función manejadora del evento de escuchar en cada serie y entre ellas elegir una y añadirla a favoritos
+function handleList(ev) {
+  //obtengo el id de la serie clickada
+  const selectedSeries = ev.currentTarget.id;
+  const selectedItem = ev.currentTarget;
+  selectedItem.classList.toggle("main_ulList_container_li_title");
+  console.log(ev.currentTarget.id);
+  //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
+  const clickedItem = series.find((serie) => {
+    //el id de la serie corresponde al id del elemento clickado
+    return serie.show.id === parseInt(selectedSeries);
+  });
+  console.log(clickedItem);
+
+  //busco si la serie clickada está en el array de favoritos;
+  //   const favoritesFound = favorites.findIndex((fav) => {
+  //     return fav.id === clickedSeries;
+  //   });
 }
 
 //# sourceMappingURL=main.js.map
