@@ -66,7 +66,9 @@ function listenListedSeries() {
 function handleList(ev) {
   //obtengo el id de la serie clickada
   const selectedSeries = ev.currentTarget.id;
-  //selectedItem.classList.toggle("main_ulList_container_li_title");
+  //quizá haya que comentarlo después ???????????????????????????
+  ev.currentTarget.classList.toggle("main_ulList_container_li_title");
+
   console.log(ev.currentTarget.id);
   //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
   const clickedItem = series.find((serie) => {
@@ -75,8 +77,11 @@ function handleList(ev) {
   });
 
   //busco si la serie clickada está en el array de favoritos; Si no está, el valor de vuelta será -1, sino devuelve la posición. busco dentro de mi array de favoritos "favorites". "fav" hace referencia a cada uno de los elementos de del array favorites
+
+  debugger;
+
   const favoritesFound = favorites.findIndex((fav) => {
-    return fav.id === selectedSeries;
+    return fav.show.id === parseInt(selectedSeries);
   });
 
   if (favoritesFound === -1) {
@@ -89,6 +94,8 @@ function handleList(ev) {
   console.log(selectedSeries);
   console.log(favoritesFound);
 }
-//creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase
+//creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase. Le pasamos como parámetro cuál es la serie del objeto que quiero ver si es favorito o no(en la función isFavorite)
+
+function isFavorite(serie) {}
 
 //# sourceMappingURL=main.js.map
