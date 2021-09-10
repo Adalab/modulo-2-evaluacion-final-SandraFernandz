@@ -42,7 +42,7 @@ function paintSeries() {
     } else {
       favClass = "";
     }
-    html += `<li class= 'listItem js_listItem ${favClass}' id='${serie.show.id}'>`;
+    html += `<li class= 'listItem js_listItem main_ulList_container_li ${favClass}' id='${serie.show.id}'>`;
     html += `<h2>${serie.show.name}</h2>`;
     console.log(serie.show.name);
     //bucle con if para caso en el que no exista cartel de la serie.
@@ -117,6 +117,7 @@ function isFavorite(serie) {
     return true;
   }
 }
+//función que permite hacer una petición al servidor si no tengo datos en el local storage:
 
 //función para buscar en localStorage si hay info guardada y no hacer la petición al servidor cada vez q recargue la pág
 function getLocalStorage() {

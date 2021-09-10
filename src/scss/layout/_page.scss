@@ -12,10 +12,19 @@ body {
   &_form {
     margin-top: 50px;
   }
+  &_ulList {
+    border: solid white 3px;
+  }
   &_ulList_container {
     margin-top: 30px;
     height: 50px;
     list-style: none;
+
+    &_li {
+      background-color: rgb(171, 209, 209);
+      margin: 10px;
+      display: inline-block;
+    }
     /*clase asociada a favoritos*/
     &_li_title {
       border: black 2px solid;
