@@ -66,8 +66,6 @@ function listenListedSeries() {
 function handleList(ev) {
   //obtengo el id de la serie clickada
   const selectedSeries = ev.currentTarget.id;
-  const selectedItem = ev.currentTarget;
-
   //selectedItem.classList.toggle("main_ulList_container_li_title");
   console.log(ev.currentTarget.id);
   //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
@@ -75,14 +73,20 @@ function handleList(ev) {
     //el id de la serie corresponde al id del elemento clickado
     return serie.show.id === parseInt(selectedSeries);
   });
-  console.log(clickedItem);
-  favorites.push(clickedItem);
-  console.log(favorites);
 
-  //busco si la serie clickada está en el array de favoritos;
-  //   const favoritesFound = favorites.findIndex((fav) => {
-  //     return fav.id === clickedSeries;
-  //   });
+  //busco si la serie clickada está en el array de favoritos; Si no está, el valor de vuelta será -1, sino devuelve la posición. busco dentro de mi array de favoritos "favorites". "fav" hace referencia a cada uno de los elementos de del array favorites
+  const favoritesFound = favorites.findIndex((fav) => {
+    return fav.id === selectedSeries;
+  });
+
+  if(favouritesFound ==== -1){
+    favorites.push(clickedItem);
+  }
+
+ 
+  console.log(favorites);
+  console.log(selectedSeries);
+  console.log(favoritesFound);
 }
 
 //# sourceMappingURL=main.js.map
