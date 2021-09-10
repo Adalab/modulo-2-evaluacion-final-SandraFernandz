@@ -79,11 +79,10 @@ function handleList(ev) {
     return fav.id === selectedSeries;
   });
 
-  if(favouritesFound ==== -1){
+  if (favouritesFound === -1) {
     favorites.push(clickedItem);
   }
 
- 
   console.log(favorites);
   console.log(selectedSeries);
   console.log(favoritesFound);
