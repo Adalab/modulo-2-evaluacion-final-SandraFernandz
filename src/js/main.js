@@ -99,7 +99,7 @@ function handleList(ev) {
   }
 
   console.log(favorites);
-  //función que añade o quita clase según si es o no favorito. está definida más abajo.
+  //función que añade o quita clase según si es o no favorito. está definida más abajo. la llamo cd vez que modifico el array de favoritos
   paintSeries();
   console.log(selectedSeries);
   console.log(favoritesFound);
@@ -115,5 +115,24 @@ function isFavorite(serie) {
     return false;
   } else {
     return true;
+  }
+}
+
+//función para buscar en localStorage si hay info guardada y no hacer la petición al servidor cada vez q recargue la pág
+function getLocalStorage() {
+  //obtenemos lo que hay en el LS
+  const localStorageSeries = localStorage.getItem("series");
+  //siempre q cojo datos del localStorage tengo q comprobar si son válidos
+  //es decir, si es la primera vez que entro en la pág
+  if (localStorageSeries === null) {
+    //no tengo datos en el local storage, así q llamo al API
+    getFromApi();
+  } else {
+    //sí tengo datos en el localStorage, así lo parseo a un array y
+    const arraySeries = JSON.parse(localStorageSeries);
+    //lo guardo en la var global de series
+    series = arraySeries;
+    //cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y a escuchar eventos:
+    paintPalettes();
   }
 }

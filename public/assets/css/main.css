@@ -32,6 +32,7 @@ body {
 .main_ulList_container {
   margin-top: 30px;
   height: 50px;
+  list-style: none;
   /*clase asociada a favoritos*/ }
   .main_ulList_container_li_title {
     border: black 2px solid; }
