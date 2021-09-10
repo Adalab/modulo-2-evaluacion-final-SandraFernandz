@@ -82,10 +82,11 @@ function handleList(ev) {
   if (favoritesFound === -1) {
     favorites.push(clickedItem);
   } else {
-    favorites.splice(favouritesFound, 1);
+    favorites.splice(favoritesFound, 1);
   }
 
   console.log(favorites);
   console.log(selectedSeries);
   console.log(favoritesFound);
 }
+//creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase
