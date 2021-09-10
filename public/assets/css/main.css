@@ -33,6 +33,8 @@ body {
   border: black 2px solid;
   margin-top: 30px;
   height: 50px; }
+  .main_ulList_container_li_img {
+    height: 50px; }
 
 .page__header {
   display: flex;
