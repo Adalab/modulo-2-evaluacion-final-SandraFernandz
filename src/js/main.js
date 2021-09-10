@@ -31,8 +31,18 @@ button.addEventListener("click", handleConnectTv);
 //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y lo pinte en la constante global arreglo series =[];
 function paintSeries() {
   let html = "";
+  let favClass = "";
+  //verifico que el elemento x el q me estoy paseando es favorito
+  //si es favorito,
   for (const serie of series) {
-    html += `<li class= 'listItem js_listItem' id='${serie.show.id}'>`;
+    const isFav = isFavorite(serie);
+    //si es favorito, le añado la clase
+    if (isFav) {
+      favClass = "main_ulList_container_li_title";
+    } else {
+      favClass = "";
+    }
+    html += `<li class= 'listItem js_listItem ${favClass}' id='${serie.show.id}'>`;
     html += `<h2>${serie.show.name}</h2>`;
     console.log(serie.show.name);
     //bucle con if para caso en el que no exista cartel de la serie.
@@ -67,7 +77,7 @@ function handleList(ev) {
   //obtengo el id de la serie clickada
   const selectedSeries = ev.currentTarget.id;
   //quizá haya que comentarlo después ???????????????????????????
-  ev.currentTarget.classList.toggle("main_ulList_container_li_title");
+  //ev.currentTarget.classList.toggle("main_ulList_container_li_title");
 
   console.log(ev.currentTarget.id);
   //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
@@ -89,6 +99,8 @@ function handleList(ev) {
   }
 
   console.log(favorites);
+  //función que añade o quita clase según si es o no favorito. está definida más abajo.
+  paintSeries();
   console.log(selectedSeries);
   console.log(favoritesFound);
 }

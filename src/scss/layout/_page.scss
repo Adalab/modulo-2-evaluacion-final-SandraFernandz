@@ -15,14 +15,12 @@ body {
   &_ulList_container {
     margin-top: 30px;
     height: 50px;
+    /*clase asociada a favoritos*/
     &_li_title {
       border: black 2px solid;
     }
     &_li_img {
       height: 50px;
     }
-  }
-  & .favorite {
-    border: red 3px solid;
   }
 }
