@@ -9,13 +9,19 @@ body {
 
   margin-top: 50px;
 }
-.header_title {
-  text-align: center;
-  &_movieIcon {
-    font-size: 60px;
+.header {
+  &_title {
+    text-align: center;
+    &_text {
+      font-family: 'Limelight', cursive;
+      font-size: 50px;
+      color: white;
+    }
+    &_movieIcon {
+      font-size: 60px;
+    }
   }
 }
-
 .main {
   &_form {
     margin-top: 10px;
@@ -25,8 +31,12 @@ body {
       justify-content: center;
       align-items: center;
     }
+    &_input {
+      text-align: center;
+      margin-bottom: 10px;
+    }
     &_textInput {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
   }
   &_structuralContainer {

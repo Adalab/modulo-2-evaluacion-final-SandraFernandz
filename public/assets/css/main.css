@@ -29,6 +29,10 @@ body {
 
 .header_title {
   text-align: center; }
+  .header_title_text {
+    font-family: 'Limelight', cursive;
+    font-size: 50px;
+    color: white; }
   .header_title_movieIcon {
     font-size: 60px; }
 
@@ -39,8 +43,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center; }
+  .main_form_input {
+    text-align: center;
+    margin-bottom: 10px; }
   .main_form_textInput {
-    margin-bottom: 20px; }
+    margin-bottom: 40px; }
 
 .main_structuralContainer {
   display: flex;
