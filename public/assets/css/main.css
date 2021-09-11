@@ -44,7 +44,8 @@ body {
     justify-content: center;
     align-items: center; }
   .main_form_textInput {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    text-align: center; }
 
 .main_structuralContainer {
   display: flex;
