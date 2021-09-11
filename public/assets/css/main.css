@@ -25,7 +25,6 @@ body {
   height: 100vh;
   background-color: rosybrown;
   font-family: 'Urbanist', sans-serif;
-  margin-left: 10px;
   margin-top: 50px; }
 
 .header_title {
@@ -75,11 +74,16 @@ body {
 
 .main_ulList {
   border: solid #914b4b 3px;
-  width: 60%;
+  width: 80%;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   justify-items: center;
-  align-items: center; }
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center; }
+  .main_ulList_h2 {
+    font-size: 20px; }
 
 .main_ulList_container {
   margin-top: 30px;

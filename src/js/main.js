@@ -48,7 +48,7 @@ function paintSeries() {
     console.log(serie.show.name);
     //bucle con if para caso en el que no exista cartel de la serie.
     html += `<div main_ulList_container_li_div>`;
-    html += `<h2>${serie.show.name}</h2>`;
+    html += `<h2 class='main_ulList_h2'>${serie.show.name}</h2>`;
     if (serie.show.image) {
       html += `<img src="${serie.show.image.original}" class="main_ulList_container_li_img"/>`;
     } else {
