@@ -3,6 +3,7 @@
 const button = document.querySelector(".js_button");
 const givenInput = document.querySelector(".js_input");
 const ulList = document.querySelector(".js_ulList");
+const ulListFavs = document.querySelector(".js_ulList2");
 
 //variable local que almacena el resultado de la búsqueda de las series introducida en el input de texto
 let series = [];
@@ -11,7 +12,7 @@ let favorites = [];
 //función manejadora del evento click de button.addEventListener para que al hacer click en el botón, la aplicación se conecte a la api de TVMaze
 function handleConnectTv(ev) {
   //variable que recoge el valor introducido por usuaria
-  let textInput = givenInput.value;
+  let textInput = givenInput.value.toLowerCase();
   //parámetros a la URL de tipo clave=valor, siempre tras ? y separados por &,
   // p.e. para pedir string con longitud determinada, la url quedaría así https://api.rand.fun/text/password?length=20
 
@@ -43,11 +44,11 @@ function paintSeries() {
       favClass = "";
     }
     html += `<li class= 'listItem js_listItem main_ulList_container_li ${favClass}' id='${serie.show.id}'>`;
-    html += `<h2>${serie.show.name}</h2>`;
+
     console.log(serie.show.name);
     //bucle con if para caso en el que no exista cartel de la serie.
-    //habrá que subir la img al proyecto.
     html += `<div main_ulList_container_li_div>`;
+    html += `<h2>${serie.show.name}</h2>`;
     if (serie.show.image) {
       html += `<img src="${serie.show.image.original}" class="main_ulList_container_li_img"/>`;
     } else {
@@ -58,6 +59,7 @@ function paintSeries() {
   }
   ulList.innerHTML = html;
   console.log(html);
+  //escucha el click sobre cada elemento de la lista
   listenListedSeries();
 }
 
@@ -101,6 +103,9 @@ function handleList(ev) {
   console.log(favorites);
   //función que añade o quita clase según si es o no favorito. está definida más abajo. la llamo cd vez que modifico el array de favoritos
   paintSeries();
+  //pinta las favoritas en nueva sección
+  printFavoriteList();
+
   console.log(selectedSeries);
   console.log(favoritesFound);
 }
@@ -118,7 +123,7 @@ function isFavorite(serie) {
   }
 }
 //función que permite hacer una petición al servidor si no tengo datos en el local storage:
-
+function getFromApi() {}
 //función para buscar en localStorage si hay info guardada y no hacer la petición al servidor cada vez q recargue la pág
 function getLocalStorage() {
   //obtenemos lo que hay en el LS
@@ -133,7 +138,32 @@ function getLocalStorage() {
     const arraySeries = JSON.parse(localStorageSeries);
     //lo guardo en la var global de series
     series = arraySeries;
-    //cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y a escuchar eventos:
-    paintPalettes();
+    //cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y escuchar eventos:
+    //???? este nombre ya está
+    //paintSeries();//este nombre ya está
+    //y que pintefavoritos la segunda lista pedir las dos o una?
   }
+}
+
+////////función para pintar series en lista de favoritos
+
+function printFavoriteList() {
+  let favsHtml = "";
+  for (const eachFav of favorites) {
+    favsHtml += `<li class= 'listItem js_listItem main_ulList_container_li' id='${eachFav.show.id}'>`;
+    favsHtml += `<h2>${eachFav.show.name}</h2>`;
+    console.log(eachFav.show.name);
+    //bucle con if para caso en el que no exista cartel de la serie.
+    favsHtml += `<div main_ulList_container_li_div>`;
+    if (eachFav.show.image) {
+      favsHtml += `<img src="${eachFav.show.image.original}" class="main_ulList_container_li_img" width="500" height="600"/>`;
+    } else {
+      favsHtml += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="image of series" class="main_ulList_container_li_img"/>`;
+    }
+    favsHtml += `</div>`;
+    favsHtml += `</li>`;
+  }
+  console.log(favsHtml);
+  ulListFavs.innerHTML = favsHtml;
+  //listenListedSeries();
 }

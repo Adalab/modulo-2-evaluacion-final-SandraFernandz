@@ -1,24 +1,54 @@
-<header>
+<header class="header_title">
   <h1>Buscador de Series</h1>
+  <i class="header_title_movieIcon">🎞︁</i>
 </header>
 <main>
   <form action="" class="main_form">
-    <input
-      type="text"
-      placeholder="Introduce aquí tu serie"
-      class="main_form_textInput js_input"
-    />
-    <input type="button" value="Search" class="main_form_button js_button" />
+    <div class="main_form_structure">
+      <span>
+        <input
+          type="text"
+          placeholder="Introduce aquí tu serie"
+          class="main_form_textInput js_input"
+        />
+      </span>
+      <span>
+        <input
+          type="button"
+          value="Buscar"
+          class="main_form_button js_button"
+        />
+      </span>
+    </div>
   </form>
-  <ul class="main_ulList js_ulList">
-    <div class="main_ulList_container">
-      <!-- pintar estructura de listado de series desde js -->
-      <!-- <li class="main_ulList_container_li listItem js_listItem">
+  <div class="main_structuralContainer">
+    <div class="main_search">
+      <h2 class="main_second_title">Resultados de tu búsqueda</h2>
+      <ul class="main_ulList js_ulList">
+        <div class="main_ulList_container">
+          <!-- pintar estructura de listado de series desde js -->
+          <!-- <li class="main_ulList_container_li listItem js_listItem">
               <h2 class="main_ulList_container_li_title">Nombre de la serie</h2>
               <div class="main_ulList_container_li_div">
                 <img class="main_ulList_container_li_img">
               </div>
           </li> -->
+        </div>
+      </ul>
     </div>
-  </ul>
+    <div class="main_favorited">
+      <h2 class="main_second_title">Series favoritas</h2>
+      <ul class="main_ulList2 js_ulList2">
+        <div class="main_ulList_container2">
+          <!-- pintar estructura de listado de series desde js -->
+          <!-- <li class="main_ulList2_container2_li2 listItem2 js_listItem2">
+              <h2 class="main_ulList2_container2_li2_title2">Nombre de la serie</h2>
+              <div class="main_ulList2_container2_li2_div2">
+                <img class="main_ulList2_container2_li2_img2">
+              </div>
+          </li> -->
+        </div>
+      </ul>
+    </div>
+  </div>
 </main>
