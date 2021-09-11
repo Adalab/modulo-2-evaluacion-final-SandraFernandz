@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const button = document.querySelector(".js_button");
-const givenInput = document.querySelector(".js_input");
-const ulList = document.querySelector(".js_ulList");
-const ulListFavs = document.querySelector(".js_ulList2");
+const button = document.querySelector('.js_button');
+const givenInput = document.querySelector('.js_input');
+const ulList = document.querySelector('.js_ulList');
+const ulListFavs = document.querySelector('.js_ulList2');
 
 //variable local que almacena el resultado de la búsqueda de las series introducida en el input de texto
 let series = [];
@@ -27,21 +27,21 @@ function handleConnectTv(ev) {
     });
 }
 
-button.addEventListener("click", handleConnectTv);
+button.addEventListener('click', handleConnectTv);
 
 //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y lo pinte en la constante global arreglo series =[];
 function paintSeries() {
-  let html = "";
-  let favClass = "";
+  let html = '';
+  let favClass = '';
   //verifico que el elemento x el q me estoy paseando es favorito
   //si es favorito,
   for (const serie of series) {
     const isFav = isFavorite(serie);
     //si es favorito, le añado la clase
     if (isFav) {
-      favClass = "main_ulList_container_li_title";
+      favClass = 'main_ulList_container_li_title';
     } else {
-      favClass = "";
+      favClass = '';
     }
     html += `<li class= 'listItem js_listItem main_ulList_container_li ${favClass}' id='${serie.show.id}'>`;
 
@@ -66,11 +66,11 @@ function paintSeries() {
 //creamos una función para poder escuchar en cada una de las series y poder marcarlas con su id si el usuario las elige como favoritas
 function listenListedSeries() {
   //selecciono todos los li pintados de la lista
-  const listSeries = document.querySelectorAll(".js_listItem");
+  const listSeries = document.querySelectorAll('.js_listItem');
   //recorro el array de los li para escuchar eventos en cada uno de ellos
   for (const listEl of listSeries) {
     //escucho el evento sobre cada serie de la lista
-    listEl.addEventListener("click", handleList);
+    listEl.addEventListener('click', handleList);
   }
 }
 
@@ -127,7 +127,7 @@ function getFromApi() {}
 //función para buscar en localStorage si hay info guardada y no hacer la petición al servidor cada vez q recargue la pág
 function getLocalStorage() {
   //obtenemos lo que hay en el LS
-  const localStorageSeries = localStorage.getItem("series");
+  const localStorageSeries = localStorage.getItem('series');
   //siempre q cojo datos del localStorage tengo q comprobar si son válidos
   //es decir, si es la primera vez que entro en la pág
   if (localStorageSeries === null) {
@@ -148,7 +148,7 @@ function getLocalStorage() {
 ////////función para pintar series en lista de favoritos
 
 function printFavoriteList() {
-  let favsHtml = "";
+  let favsHtml = '';
   for (const eachFav of favorites) {
     favsHtml += `<li class= 'listItem js_listItem main_ulList_container_li' id='${eachFav.show.id}'>`;
     favsHtml += `<h2>${eachFav.show.name}</h2>`;
@@ -156,7 +156,7 @@ function printFavoriteList() {
     //bucle con if para caso en el que no exista cartel de la serie.
     favsHtml += `<div main_ulList_container_li_div>`;
     if (eachFav.show.image) {
-      favsHtml += `<img src="${eachFav.show.image.original}" class="main_ulList_container_li_img" width="500" height="600"/>`;
+      favsHtml += `<img src="${eachFav.show.image.original}" class="main_ulList_container_li_img"/>`;
     } else {
       favsHtml += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="image of series" class="main_ulList_container_li_img"/>`;
     }

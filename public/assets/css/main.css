@@ -24,7 +24,7 @@ body {
   padding: 2rem;
   height: 100vh;
   background-color: rosybrown;
-  font-family: "Urbanist", sans-serif;
+  font-family: 'Urbanist', sans-serif;
   margin-left: 10px;
   margin-top: 50px; }
 
@@ -67,14 +67,19 @@ body {
   align-items: center; }
 
 .main_second_title {
-  font-family: "Urbanist", sans-serif;
+  font-family: 'Urbanist', sans-serif;
   color: white;
   font-size: 20px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  margin-bottom: 20px; }
 
 .main_ulList {
   border: solid #914b4b 3px;
-  width: 60%; }
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center; }
 
 .main_ulList_container {
   margin-top: 30px;
@@ -88,16 +93,19 @@ body {
     width: 90px;
     text-align: center; }
     .main_ulList_container_li_img {
-      align-content: center;
-      width: 80px; }
+      width: 70px; }
   .main_ulList_container_li_title {
     border: black 2px solid;
     background-color: #ded8d8; }
 
 .main_ulList2 {
   border: solid gray 5px;
-  width: 100%;
-  height: 100vw; }
+  width: 70px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center; }
 
 .page__header {
   display: flex;
