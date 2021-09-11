@@ -1,5 +1,17 @@
 ![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
 
+Esta es la evaluación del Módulo 2 de JavaScript de Adalab.
+
+El proyecto consiste en realizar un buscador de series que retorna la petición del usuario. Una vez realizada la selección de series, es posible marcar algunas como favoritas.
+
+La búsqueda se realiza con una petición a una api del servidor. El foco de trabajo está centrado en el uso JS, empleando conceptos como fetch, funciones, eventos, bucles, condicionales, métodos, almacenamiento local y arrays entre otros. 
+
+El contenido de la estructura de HTML se crea también de modo dinámico desde JavaScript.
+
+La estructura del proyecto está realizada con el Adalab Web Starter Kit, sobre el que puedes leer más abajo.
+
+
+
 # Adalab web starter kit
 
 Ahoy! Este es nuestro Starter Kit creado en **node y gulp**. ¿Y qué es un Starter kit? Pues es una **plantilla de proyecto con funcionalidades preinstaladas y preconfiguradas**.
