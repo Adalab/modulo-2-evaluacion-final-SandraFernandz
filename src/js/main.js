@@ -10,9 +10,11 @@ let series = [];
 let favorites = [];
 
 //función manejadora del evento click de button.addEventListener para que al hacer click en el botón, la aplicación se conecte a la api de TVMaze
+//función que permite hacer una petición al servidor si no tengo datos en el local storage:
 function handleConnectTv(ev) {
   //variable que recoge el valor introducido por usuaria
   let textInput = givenInput.value.toLowerCase();
+  //1.Realizamos petición api al servidor:
   //parámetros a la URL de tipo clave=valor, siempre tras ? y separados por &,
   // p.e. para pedir string con longitud determinada, la url quedaría así https://api.rand.fun/text/password?length=20
 
@@ -22,20 +24,25 @@ function handleConnectTv(ev) {
       console.log(data);
       series = data;
       console.log(series);
-      //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen)
+      //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y las pintamos:
       paintSeries();
+      ///????????????????
+      setInLocalStorage();
     });
 }
 
+//2.cd presiono botón, se desencadena evento de ir a buscar datos
 button.addEventListener('click', handleConnectTv);
 
 //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y lo pinte en la constante global arreglo series =[];
 function paintSeries() {
   let html = '';
+  //la variable favClass contiene la clase que yo le quiero poner al li
   let favClass = '';
   //verifico que el elemento x el q me estoy paseando es favorito
   //si es favorito,
   for (const serie of series) {
+    //otengo lo que me ha devuelto la función que valida si es favorito y lo guardo en la variable isFav. esa constante isFav contiene false or true.
     const isFav = isFavorite(serie);
     //si es favorito, le añado la clase
     if (isFav) {
@@ -43,7 +50,9 @@ function paintSeries() {
     } else {
       favClass = '';
     }
-    html += `<li class= 'listItem js_listItem main_ulList_container_li ${favClass}' id='${serie.show.id}'>`;
+    //${favClass} es la variable que contiene la clase q aplicamos a serie seleccionada como favorita. añadimos la clase a todos los li y si los marcan como favoritos, la aplica, sino, la pasa vacía
+    html += `<li class= 'listItem js_listItem 
+    main_ulList_container_li ${favClass}' id='${serie.show.id}'>`;
 
     console.log(serie.show.name);
     //bucle con if para caso en el que no exista cartel de la serie.
@@ -78,13 +87,12 @@ function listenListedSeries() {
 function handleList(ev) {
   //obtengo el id de la serie clickada
   const selectedSeries = ev.currentTarget.id;
-  //quizá haya que comentarlo después ???????????????????????????
-  //ev.currentTarget.classList.toggle("main_ulList_container_li_title");
 
   console.log(ev.currentTarget.id);
   //busco la serie clickada en el array de series paso una función que tiene como parámetro cada serie
   const clickedItem = series.find((serie) => {
     //el id de la serie corresponde al id del elemento clickado
+    //si find no encuentra el elemento devuelve undefined
     return serie.show.id === parseInt(selectedSeries);
   });
 
@@ -113,35 +121,47 @@ function handleList(ev) {
 //creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase. Le pasamos como parámetro cuál es la serie del objeto que quiero ver si es favorito o no(en la función isFavorite)
 
 function isFavorite(serie) {
+  //busco si un elemento (fav) se encuentra dentro del array de favorites o no
   const favoriteFound = favorites.find((fav) => {
+    //la serie que estoy pansando es favorita?
     return fav.show.id === serie.show.id;
   });
+  //si sí es favorita
   if (favoriteFound === undefined) {
+    //significa que el elemento no es favorito
     return false;
   } else {
     return true;
   }
+  //ese valor de false o true es el que voy a usar dentro del bucle for en la función paintSeries y decido si añado la clase para favoritos o no
 }
-//función que permite hacer una petición al servidor si no tengo datos en el local storage:
-function getFromApi() {}
-//función para buscar en localStorage si hay info guardada y no hacer la petición al servidor cada vez q recargue la pág
+//añadimos la información al localStorage:
+
+function setInLocalStorage() {
+  //stringify me permite transformar a string el array de palettes
+  const stringSeries = JSON.stringify(favorites);
+  //añadimos al localStorage los datos convertidos en string previamente
+  localStorage.setItem('favorites', stringSeries);
+}
+
+//función que nos permite buscar en el localStorage si ya hay info guardada
 function getLocalStorage() {
   //obtenemos lo que hay en el LS
-  const localStorageSeries = localStorage.getItem('series');
+  const localStorageSeries = localStorage.getItem('favorites');
   //siempre q cojo datos del localStorage tengo q comprobar si son válidos
   //es decir, si es la primera vez que entro en la pág
   if (localStorageSeries === null) {
-    //no tengo datos en el local storage, así q llamo al API
-    getFromApi();
+    //no tengo datos en el local storage, así q llamo al API con la petición al servidor (la del principio)
+    //getFromApi(); así le llama dayana en su ej
+    handleConnectTv();
   } else {
     //sí tengo datos en el localStorage, así lo parseo a un array y
-    const arraySeries = JSON.parse(localStorageSeries);
+    const arrayFavorites = JSON.parse(localStorageSeries);
     //lo guardo en la var global de series
-    series = arraySeries;
-    //cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y escuchar eventos:
-    //???? este nombre ya está
-    //paintSeries();//este nombre ya está
-    //y que pintefavoritos la segunda lista pedir las dos o una?
+    favorites = arrayFavorites;
+    ///////???????????????
+    printFavoriteList();
+    paintSeries();
   }
 }
 
@@ -165,5 +185,9 @@ function printFavoriteList() {
   }
   console.log(favsHtml);
   ulListFavs.innerHTML = favsHtml;
+  //los datos que me ha dado la API los guardamos en localStorage:
+  setInLocalStorage();
   //listenListedSeries();
 }
+
+getLocalStorage();
