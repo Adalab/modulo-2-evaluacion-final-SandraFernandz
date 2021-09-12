@@ -14,26 +14,27 @@ let favorites = [];
 function handleConnectTv(ev) {
   //variable que recoge el valor introducido por usuaria
   let textInput = givenInput.value.toLowerCase();
-  //1.Realizamos petición api al servidor:
+
+  //1.Realizamos petición de una api al servidor:
   //parámetros a la URL de tipo clave=valor, siempre tras ? y separados por &,
   // p.e. para pedir string con longitud determinada, la url quedaría así https://api.rand.fun/text/password?length=20
-
+  //3. Obtenemos los datos del servidor y lo almacenamos en la variable global series
   fetch(`https://api.tvmaze.com/search/shows?q=${textInput}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       series = data;
       console.log(series);
-      //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y las pintamos:
+      //6. Llamamos a la función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y las pintamos:
       paintSeries();
-      ///????????????????
       setInLocalStorage();
     });
 }
 
-//2.cd presiono botón, se desencadena evento de ir a buscar datos
+//2.cd presiono botón, se desencadena evento de ir a buscar datos mediante la función handleConnectTv
 button.addEventListener('click', handleConnectTv);
 
+//4. Pintamos las series resultado de la búsqueda
 //función para que la búsqueda del input resulte en un listado de series con título y cartel (imagen) y lo pinte en la constante global arreglo series =[];
 function paintSeries() {
   let html = '';
@@ -72,6 +73,7 @@ function paintSeries() {
   listenListedSeries();
 }
 
+//.8 creamos función para poder hacer clicklables las series mediante un addEventListener.
 //creamos una función para poder escuchar en cada una de las series y poder marcarlas con su id si el usuario las elige como favoritas
 function listenListedSeries() {
   //selecciono todos los li pintados de la lista
@@ -83,6 +85,7 @@ function listenListedSeries() {
   }
 }
 
+//9. Función que maneja el evento de convertir las series resultado en clickables, y obtener su id al hacer click sobre ella
 //función manejadora del evento de escuchar en cada serie y entre ellas elegir una y añadirla a favoritos
 function handleList(ev) {
   //obtengo el id de la serie clickada
@@ -96,7 +99,7 @@ function handleList(ev) {
     return serie.show.id === parseInt(selectedSeries);
   });
 
-  //busco si la serie clickada está en el array de favoritos; Si no está, el valor de vuelta será -1, sino devuelve la posición. busco dentro de mi array de favoritos "favorites". "fav" hace referencia a cada uno de los elementos de del array favorites
+  //11. busco si la serie clickada está en el array de favoritos; Si no está, el valor de vuelta será -1, sino, devuelve la posición. busco dentro de mi array de favoritos "favorites". "fav" hace referencia a cada uno de los elementos de del array favorites
 
   const favoritesFound = favorites.findIndex((fav) => {
     return fav.show.id === parseInt(selectedSeries);
@@ -118,7 +121,7 @@ function handleList(ev) {
   console.log(favoritesFound);
 }
 
-//creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase. Le pasamos como parámetro cuál es la serie del objeto que quiero ver si es favorito o no(en la función isFavorite)
+//11. creo una función que verifica si ese li(elemento que quiero pintar es un favorito), me retorna un valor y luego yo le añado la clase. Le pasamos como parámetro cuál es la serie del objeto que quiero ver si es favorito o no(en la función isFavorite)
 
 function isFavorite(serie) {
   //busco si un elemento (fav) se encuentra dentro del array de favorites o no
@@ -135,7 +138,7 @@ function isFavorite(serie) {
   }
   //ese valor de false o true es el que voy a usar dentro del bucle for en la función paintSeries y decido si añado la clase para favoritos o no
 }
-//añadimos la información al localStorage:
+//14. añadimos la información al localStorage:
 
 function setInLocalStorage() {
   //stringify me permite transformar a string el array de palettes
@@ -144,7 +147,7 @@ function setInLocalStorage() {
   localStorage.setItem('favorites', stringSeries);
 }
 
-//función que nos permite buscar en el localStorage si ya hay info guardada
+//13. función que nos permite buscar en el localStorage si ya hay info guardada
 function getLocalStorage() {
   //obtenemos lo que hay en el LS
   const localStorageSeries = localStorage.getItem('favorites');
@@ -159,13 +162,12 @@ function getLocalStorage() {
     const arrayFavorites = JSON.parse(localStorageSeries);
     //lo guardo en la var global de series
     favorites = arrayFavorites;
-    ///////???????????????
     printFavoriteList();
     paintSeries();
   }
 }
 
-////////función para pintar series en lista de favoritos
+////////12. función para pintar series en lista de favoritos
 
 function printFavoriteList() {
   let favsHtml = '';
@@ -189,7 +191,7 @@ function printFavoriteList() {
   setInLocalStorage();
   //listenListedSeries();
 }
-
+//.15 llamo a la función de almacenamiento
 getLocalStorage();
 
 //# sourceMappingURL=main.js.map
