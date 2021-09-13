@@ -182,16 +182,54 @@ function printFavoriteList() {
     } else {
       favsHtml += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="image of series" class="main_ulList_container_li_img"/>`;
     }
+    favsHtml += `<button id="${eachFav.show.id}" class="js_favButton">X</button>`;
     favsHtml += `</div>`;
     favsHtml += `</li>`;
   }
   console.log(favsHtml);
   ulListFavs.innerHTML = favsHtml;
+  //favs son clickables
+  makeFavClickable();
   //los datos que me ha dado la API los guardamos en localStorage:
   setInLocalStorage();
   //listenListedSeries();
 }
 //.15 llamo a la función de almacenamiento
 getLocalStorage();
+
+//Eliminar favoritos de la lista de elegidos//////////////
+//F1.//función para hacer cada botón clickable mediante un addEVentListener
+
+function makeFavClickable() {
+  const favButton = document.querySelectorAll('.js_favButton');
+  //selecciono TODOS botones de la sección de favoritos
+
+  for (const eachButton of favButton) {
+    //F2.recorro el array de los botones favoritos y escucho evento en CADA uno de ellos
+    eachButton.addEventListener('click', handleRemoveFavFromFavsList);
+  }
+}
+//traigo el div que contiene los favoritos
+const favDiv = document.querySelector('.js_div2');
+// //F3. función manejadora del evento
+function handleRemoveFavFromFavsList(ev) {
+  let clickedFav = parseInt(ev.currentTarget.id);
+  const findClicked = favorites.findIndex(clickedFav);
+  favorites.splice();
+  console.log(clickedFav);
+}
+// console.log(clickedFav);
+// const searchClickedFav = favorites.find((clickedFav) => {
+//   return parseInt(clickedFav.show.id) ===
+//   favDiv.innerHTML = '';
+//}
+// console.log(searchClickedFav);
+// if (clickedFav !== null) {
+//   clickedFav = '';
+// }
+
+//const clickedFav = favorites.find(clickedElement) =>{
+//return clickedElement = '';
+//}
 
 //# sourceMappingURL=main.js.map

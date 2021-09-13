@@ -68,7 +68,7 @@ body {
     margin-bottom: 20px;
   }
   &_ulList {
-    border: solid #914b4b 3px;
+    //border: solid #914b4b 3px;
     width: 80%;
     height: 120vh;
     display: flex;
@@ -100,7 +100,7 @@ body {
       margin: 10px;
       display: inline-block;
       width: 90px;
-      height: 170px;
+      height: 190px;
       text-align: center;
       &_img {
         width: 70px;
@@ -117,12 +117,14 @@ body {
     // }
   }
   &_ulList2 {
-    border: solid gray 5px;
     width: 70px;
     min-width: 100px;
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
+    &_container2_li2_div2 {
+      background-color: salmon;
+    }
   }
 }
