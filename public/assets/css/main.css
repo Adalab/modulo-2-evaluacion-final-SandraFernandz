@@ -64,7 +64,6 @@ body {
   width: 60%; }
 
 .main_favorited {
-  background-color: royalblue;
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -96,16 +95,18 @@ body {
   list-style: none;
   /*clase asociada a favoritos*/ }
   .main_ulList_container_li {
-    background-color: #abd1d1;
+    background-color: #e8d4d4;
+    color: #984f4f;
     margin: 10px;
     display: inline-block;
     width: 90px;
+    height: 170px;
     text-align: center; }
     .main_ulList_container_li_img {
       width: 70px; }
   .main_ulList_container_li_title {
-    border: black 2px solid;
-    background-color: #ded8d8; }
+    background-color: #984f4f;
+    color: #e8d4d4; }
 
 .main_ulList2 {
   border: solid gray 5px;

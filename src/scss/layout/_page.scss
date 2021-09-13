@@ -53,7 +53,7 @@ body {
     width: 60%;
   }
   &_favorited {
-    background-color: royalblue;
+    //background-color: royalblue;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -94,10 +94,13 @@ body {
     list-style: none;
 
     &_li {
-      background-color: rgb(171, 209, 209);
+      background-color: rgb(232, 212, 212);
+      //background-color: #914b4b;
+      color: #984f4f;
       margin: 10px;
       display: inline-block;
       width: 90px;
+      height: 170px;
       text-align: center;
       &_img {
         width: 70px;
@@ -105,8 +108,9 @@ body {
     }
     /*clase asociada a favoritos*/
     &_li_title {
-      border: black 2px solid;
-      background-color: rgb(222, 216, 216);
+      // border: black 2px solid;
+      background-color: #984f4f;
+      color: rgb(232, 212, 212);
     }
     // &_li_img {
     //   height: 50px;
