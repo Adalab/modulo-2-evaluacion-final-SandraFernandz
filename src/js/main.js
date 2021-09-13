@@ -212,15 +212,21 @@ function makeFavClickable() {
 //traigo el div que contiene los favoritos
 const favDiv = document.querySelector('.js_div2');
 // //F3. función manejadora del evento
+
 function handleRemoveFavFromFavsList(ev) {
   let clickedFav = parseInt(ev.currentTarget.id);
-  const findClicked = favorites.findIndex(clickedFav);
-  favorites.splice();
-  console.log(clickedFav);
+
+  // favorites = [];
+  // //limpiamos el ls
+  // localStorage.clear();
+  // //recargar la página después de borrar
+  // location.reload();
+
+  //const findClicked = favorites.findIndex(clickedFav);
+  //favorites.splice();
+  // console.log(clickedFav);
 }
-// console.log(clickedFav);
-// const searchClickedFav = favorites.find((clickedFav) => {
-//   return parseInt(clickedFav.show.id) ===
+
 //   favDiv.innerHTML = '';
 //}
 // console.log(searchClickedFav);
