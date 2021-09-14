@@ -64,6 +64,7 @@ function paintSeries() {
     } else {
       html += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="image of series" class="main_ulList_container_li_img">`;
     }
+    html += `<p>${serie.show.genres}</p>`;
     html += `</div>`;
     html += `</li>`;
   }
@@ -81,8 +82,17 @@ function listenListedSeries() {
   //recorro el array de los li para escuchar eventos en cada uno de ellos
   for (const listEl of listSeries) {
     //escucho el evento sobre cada serie de la lista
-    listEl.addEventListener('click', handleList);
+    //listEl.addEventListener('click', handleList);
+    listEl.addEventListener('click', showNameofSeries);
   }
+}
+
+function showNameofSeries(ev) {
+  console.log(ev.currentTarget.id);
+  const findName = series.find(
+    (serie) => serie.show.id === parseInt(ev.currentTarget.id)
+  );
+  console.log(findName.show.name);
 }
 
 //9. Función que maneja el evento de convertir las series resultado en clickables, y obtener su id al hacer click sobre ella
@@ -115,6 +125,7 @@ function handleList(ev) {
   //función que añade o quita clase según si es o no favorito. está definida más abajo. la llamo cd vez que modifico el array de favoritos
   paintSeries();
   //pinta las favoritas en nueva sección
+
   printFavoriteList();
 
   console.log(selectedSeries);
